@@ -1,0 +1,33 @@
+background: radial-gradient(circle,
+  ______ 0 13%,      /* pupil → #10131a */
+  ______ 13% 17%,    /* white → #ffffff */
+  ______ 17% 34%,    /* iris  → #3ea1ff */
+  ______ 34% 47%,    /* white → #ffffff */
+  ______ 47% 100%);  /* navy  → #123a8f */
+  body {
+  background: #24406b;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;   /* centre left-to-right */
+  align-items: flex-start;   /* stick to the TOP, so it hangs down */
+}
+
+.dangle {
+  display: flex;
+  flex-direction: column;    /* string on top, eye below */
+  align-items: center;
+  transform-origin: top center;              /* ← the pivot: swings from its top, like a nail */
+  animation: sway 4s ease-in-out infinite;   /* run the swing below, forever */
+}
+
+.string {
+  width: 2px;
+  height: 60px;
+  background: #d9b44a;        /* a golden thread */
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-8deg); }   /* tilt left  */
+  50%      { transform: rotate(8deg); }    /* tilt right */
+}
