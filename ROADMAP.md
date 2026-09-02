@@ -12,7 +12,7 @@ The application DrustiChuka is developed in sprint wise incrementaly following a
 | Sprint | Implementation | Description | Status |
 |--------|----------------|-------------|--------|
 | Sprint 0 — Setup | Implementation 0 | Project skeleton, GitHub repo, README & roadmap |  Done |
-| Sprint 1 — Charm prototype | Implementation 1 | Draw the nazar in CSS — make it hang and sway (browser) |  In progress |
+| Sprint 1 — Charm prototype | Implementation 1 | Draw the nazar in CSS — make it hang and sway (browser) |  Done |
 | | Implementation 2 | Add more charms and a selector to switch between them | Planned |
 | Sprint 2 — Desktop app | Implementation 3 | Wrap the prototype as a native Mac app (Electron) | Planned |
 | | Implementation 4 | Transparent, click-through overlay floating on the desktop | Planned |
