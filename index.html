@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>DrustiChuka</title>
+  <title>Lumosia</title>
   <style>
     body {
       background: transparent;
@@ -22,38 +22,54 @@
       border-radius: 8px;
       border: none;
       cursor: pointer;
-}
-
-    .charm {
-      height: 140px;                
-      transform-origin: top center;  
-      animation: sway 4s ease-in-out infinite;
+}   
+    .hang {
+      display: flex; flex-direction: column; align-items: center;
+      transform-origin: top center;
     }
+    .thread {
+      width: 2px;
+      height: 10px;      /* ← long thread. Bigger number = hangs lower */
+      background: linear-gradient(#d9b44a, #b8860b);
+    }
+    .charm { height: 140px; }         /* no animation by default = hangs still */
+    .hang.swing { animation: sway 2.5s ease-in-out; }   /* note: NO 'infinite' → plays once */
 
     @keyframes sway {
-      0%, 100% { transform: rotate(-6deg); }
-      50%      { transform: rotate(6deg); }
+      0%   { transform: rotate(0deg); }
+      8%   { transform: rotate(-5deg); }
+      16%  { transform: rotate(4deg); }
+      24%  { transform: rotate(-2deg); }
+      32%  { transform: rotate(1deg); }
+      40%, 100% { transform: rotate(0deg); }   /* hangs still for the rest */
+
     }
   </style>
 </head>
 <body>
-  <div class="picker">
-    <button data-charm="evileye-classic.png">Evil Eye</button>
-    <button data-charm="nimbu-mirchi.png">Nimbu Mirchi</button>
-    <button data-charm="hamsa.png">Hamsa</button>
-    <button data-charm="evileye-sunburst.png">Sunburst</button>
-    <button data-charm="heart.png">Heart</button>
-    <button data-charm="number-7.png">Seven</button>
-    <button data-charm="eleven-eleven.png">11:11</button>
+  <div class="hang" id="hang">
+    <div class="thread"></div>
+    <img id="charm" class="charm" src="charms/evileye-classic.png" alt="charm">
   </div>
-  <img id="charm" class="charm" src="charms/evileye-classic.png" alt="Evil Eye">
-</body>
- <script>
-    // find every button, and when one is clicked, swap the charm image
-    document.querySelectorAll('.picker button').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.getElementById('charm').src = 'charms/' + btn.dataset.charm;
-      });
+
+  <script>
+    const { ipcRenderer } = require('electron');
+    const charm = document.getElementById('charm');
+    const hang  = document.getElementById('hang');
+
+    // switch charm from the menu bar
+    ipcRenderer.on('set-charm', (e, file) => { charm.src = 'charms/' + file; });
+
+    // only catch clicks while the cursor is over the charm (rest stays click-through)
+    charm.addEventListener('mouseenter', () => ipcRenderer.send('set-ignore', false));
+    charm.addEventListener('mouseleave', () => ipcRenderer.send('set-ignore', true));
+
+    // dangle ONCE when clicked
+    charm.addEventListener('click', () => {
+      hang.classList.remove('swing');
+      void hang.offsetWidth;          // trick to restart the animation
+      hang.classList.add('swing');
     });
   </script>
+</body>
 </html>

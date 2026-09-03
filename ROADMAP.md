@@ -1,5 +1,5 @@
-# DrustiChuka — Roadmap
-The application DrustiChuka is developed in sprint wise incrementaly following all the agile implemenations. Each feature is based on user stories and developed on feature branch. Once every use case of the feature is tested on feature branch are then merged on to the Main branch via pull request. 
+# Lumosia — Roadmap
+The application Lumosia is developed in sprint wise incrementaly following all the agile implemenations. Each feature is based on user stories and developed on feature branch. Once every use case of the feature is tested on feature branch are then merged on to the Main branch via pull request. 
 
 **Developing Approach**
 *Feature-Main :* developed and tested on feature branch, then open a pull request, merged to main.
