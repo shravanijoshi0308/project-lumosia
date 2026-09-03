@@ -5,13 +5,24 @@
   <title>DrustiChuka</title>
   <style>
     body {
-      background: #24406b;
+      background: #b5c8ed;
       margin: 0;
       height: 100vh;
       display: flex;
       justify-content: center;   
       align-items: flex-start;   
     }
+    .picker {
+      display: flex;
+      gap: 8px;
+      padding: 16px;
+}
+    .picker button {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+}
 
     .charm {
       height: 140px;                
@@ -26,6 +37,23 @@
   </style>
 </head>
 <body>
-  <img class="charm" src="charms/nazar.png" alt="Nazar">
+  <div class="picker">
+    <button data-charm="evileye-classic.png">Evil Eye</button>
+    <button data-charm="nimbu-mirchi.png">Nimbu Mirchi</button>
+    <button data-charm="hamsa.png">Hamsa</button>
+    <button data-charm="evileye-sunburst.png">Sunburst</button>
+    <button data-charm="heart.png">Heart</button>
+    <button data-charm="number-7.png">Seven</button>
+    <button data-charm="eleven-eleven.png">11:11</button>
+  </div>
+  <img id="charm" class="charm" src="charms/evileye-classic.png" alt="Evil Eye">
 </body>
+ <script>
+    // find every button, and when one is clicked, swap the charm image
+    document.querySelectorAll('.picker button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.getElementById('charm').src = 'charms/' + btn.dataset.charm;
+      });
+    });
+  </script>
 </html>
