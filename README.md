@@ -1,7 +1,6 @@
-# DrustiChuka 
+# Lumosia 
 *Even your Mac deserves a charm*
 A good-luck charm that dangles on your Mac desktop.
-The DrustiChuka is combination of a little Telugu chukka (dot) to catch the Marathi drusti (evil eye) before it reaches your Mac.
 This a tiny playful charm that dangles on macOS over your desktop. 
 You can pick your own charm that shows from a menu-bar icon.
 
